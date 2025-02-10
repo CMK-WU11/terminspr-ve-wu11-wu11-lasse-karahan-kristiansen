@@ -4,7 +4,18 @@ const nextConfig: NextConfig = {
   /* Preload fonts and colors in all scss files. */
   sassOptions: {
     additionalData: `@use '@/styles/_colors' as *; @use '@/styles/_typography' as *;`,
-  }
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '4000',
+        pathname: '/file-bucket/**',
+        search: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
