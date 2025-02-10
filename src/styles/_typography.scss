@@ -2,8 +2,9 @@
 
 // Font mixins
 @function font-size($size) {
-  @return clamp( calc( $size * 0.2 ),  $size * 100 / 300 , $size ) * 1rem
-  // @return $size * 1rem;
+  // FIXME - Attempt scaling font - if time is available
+  // @return clamp( calc( $size * 0.2 ),  2 * $size / 2% , $size ) * 1rem
+  @return $size * 1rem;
 }
 
 @function line-height($size) {

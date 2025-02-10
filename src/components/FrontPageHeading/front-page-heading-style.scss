@@ -1,12 +1,6 @@
 .front-page-heading{
     width: 100%;
-    // position: relative;
-    // transform: translateY(clamp( -10dvh, -25dvh, -30dvh ));
-    
-    position: absolute;
-    transform: translateY(-50%);
-    
-    
+
     .front-page-heading__content{
         display: flex;
         flex-direction: column;
