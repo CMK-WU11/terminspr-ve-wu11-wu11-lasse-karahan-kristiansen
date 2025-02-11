@@ -57,7 +57,26 @@ Host with render.com\
 
 ## Code Snippets
 
-```jsx
+```ts
+type Weekdays = 'Mandag' | 'Tirsdag' | 'Onsdag' | 'Torsdag' | 'Fredag' | 'Lørdag' | 'Søndag'
+
+type LandrupDansApiActivityObject = {
+    id: number,
+    name: string,
+    description: string,
+    weekday: 
+        //NOTE - This is a union type of the Weekdays type with the first letter capitalized and lowercase. This is to ensure that the API returns the correct format of the weekdays and handle minor typos.
+        Capitalize<Weekdays> | 
+        Lowercase<Weekdays>,,
+    ...
+    asset: {
+        id: number,
+        url: string,
+        createdAt: string,
+        updatedAt: string
+    },
+    users: [ LandrupDansApiUserObject ]
+}
 ```
 
 ## References

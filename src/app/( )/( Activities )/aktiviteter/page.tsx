@@ -5,12 +5,24 @@ import PageHeading from "@/components/PageHeading";
 import './aktiviteter-style.scss'
 import ActivityCard from "@/components/ActivityCard";
 
+// Actions
+import { getActivities } from "@/actions/activities-api";
 
-export default function AktiviteterPage(){
+
+export default async function AktiviteterPage(){
+    const activities = await getActivities();
+
+
     return (
         <main className="activities-page-main">
             <PageHeading text="Aktiviteter" />
-            <ActivityCard />
+            {
+                activities?.map(( item ) => {
+                    return (
+                        <ActivityCard activity={ item } key={ item.id }/>
+                    )
+                })
+            }
         </main>
     )
 }

@@ -5,26 +5,32 @@ import Link from "next/link";
 import './activity-card.scss'
 
 //TODO - Remove static data and implement dynamic data
-export default function ActivityCard(){
+export default function ActivityCard({
+    activity,
+} : {
+    activity: LandrupDansApiActivityObject;
+}){
+    const activityAge = `${ activity?.minAge }-${ activity?.maxAge } år`
+
     return (
         <Link
-            href={'/'}
+            href={`/aktivitet/${ activity?.id }`}
             className="activity-card"
         >
             <div className="activity-card__content">
-                <p>Junior Fitness Dance</p>
-                <p>10-12 år</p>
+                <p>{ activity?.name }</p>
+                <p>{ activityAge}</p>
             </div>
 
             <Image
-            className="activity-card__image"
-                alt="Mountains"
-                src={'http://localhost:4000/file-bucket/1632381947468tango.jpg'}
+                className="activity-card__image"
+                alt={`Picture of dans practice for the ${ activity?.name } team.`}
+                src={ activity?.asset?.url }
                 // placeholder="blur"
                 quality={100}
                 sizes='100vw'
                 fill={true}
-                />
+            />
         </Link>
     )
 }
