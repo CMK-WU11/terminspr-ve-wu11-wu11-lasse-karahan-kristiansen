@@ -19,7 +19,7 @@ export default function ButtonLink(
     return (
         <Link
             href={ href }
-            className={`base-button-link${ className ? ' ${className}' : ''}`}
+            className={`base-button-link${ className ? ` ${className}` : ''}`}
         >
             { children }
         </Link>

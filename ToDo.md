@@ -22,3 +22,4 @@
 ## P3
 - [ ] 3.1 Review the Activities page
 - [ ] 3.2 Review the activity api actions
+- [ ] Review and refactor the not-found page

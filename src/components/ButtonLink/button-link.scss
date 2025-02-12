@@ -14,4 +14,27 @@
     &.justify-self-end{
         justify-self: flex-end;
     }
+
+    &.fade-in{
+        opacity: 0;
+        animation: fadeIn 1s 1.5s forwards;
+    }
+
+}
+
+@keyframes slideInFromLeft {
+    from {
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
 }

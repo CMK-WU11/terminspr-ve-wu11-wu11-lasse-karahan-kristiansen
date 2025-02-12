@@ -20,9 +20,9 @@ export default function Home() {
       }}
     >
       <FrontPageHeading />
-      <ButtonLink className="justify-self-end" href="/aktiviteter">Kom i gang</ButtonLink>
+      <ButtonLink className="justify-self-end fade-in" href="/aktiviteter">Kom i gang</ButtonLink>
       <Image
-        alt="Mountains"
+        alt={'Frontpage splash image'}
         src={SplashImage}
         placeholder="blur"
         quality={100}

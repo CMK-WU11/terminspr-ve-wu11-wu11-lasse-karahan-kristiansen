@@ -6,6 +6,7 @@ import PageHeading from "@/components/PageHeading";
 
 // Styles
 import './aktivitet-style.scss';
+import Button from "@/components/Button";
 
 export default async function AktiviteterPage({
     params
@@ -18,22 +19,34 @@ export default async function AktiviteterPage({
     try{
         const activity = await getActivity( activityId );
         
+        const activityAge = `${ activity?.minAge }-${ activity?.maxAge } år`
 
         return (
             <main className="activity-page-main">
-                <Image
-                    alt="Mountains"
-                    src={`${ activity?.asset?.url }`}
-                    // placeholder="blur"
-                    quality={100}
-                    fill
-                    sizes="100vw"
-                    style={{
-                        objectFit: 'cover',
-                        zIndex: -2
-                    }}
-                />
-                <p>{ activity?.name }</p>
+                <section className="activity-page-main__hero">
+                    <Button
+                        text="Tilmeld"
+                    />
+                    <Image
+                        alt={`Picture of dans practice for the ${ activity?.name } team.`}
+                        src={`${ activity?.asset?.url }`}
+                        // placeholder="blur"
+                        quality={100}
+                        fill
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'cover',
+                        }}
+                    />
+                </section>
+                <section className="activity-page-main__content">
+                    <PageHeading text={activity?.name} />
+                    <div>
+                        <p>{ activityAge }</p>
+                        <p>{ activity?.weekday } kl.{ activity?.time }</p>
+                    </div>
+                    <p>{ activity?.description }</p>
+                </section>
             </main>
         )
     } catch ( error ) {

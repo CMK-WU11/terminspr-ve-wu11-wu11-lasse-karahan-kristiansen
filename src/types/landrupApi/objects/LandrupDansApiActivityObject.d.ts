@@ -1,5 +1,6 @@
 type Weekdays = 'Mandag' | 'Tirsdag' | 'Onsdag' | 'Torsdag' | 'Fredag' | 'Lørdag' | 'Søndag'
 
+
 type LandrupDansApiActivityObject = {
     id: number,
     name: string,
@@ -22,4 +23,10 @@ type LandrupDansApiActivityObject = {
         updatedAt: string
     },
     users: [ LandrupDansApiUserObject ],
+    getAgeRange: () => string;
+}
+
+//FIXME - Implement function for automatically generating the age range
+LandrupDansApiActivityObject.prototype.getAgeRange = function() {
+    return `${this.minAge}-${this.maxAge} aar`;
 }

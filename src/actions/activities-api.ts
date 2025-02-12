@@ -34,7 +34,7 @@ export async function getActivity( activityId : string ) : Promise<LandrupDansAp
     try{
         const response = await fetch( `${ apiEndpoint }activities/${ activityId }` )
 
-        const data = await response.json();
+        const data = await response.json() as LandrupDansApiActivityObject;
 
         if (!response.ok) {
             throw new Error('Failed to fetch activity');
