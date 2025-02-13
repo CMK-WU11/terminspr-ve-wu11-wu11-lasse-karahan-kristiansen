@@ -6,7 +6,7 @@ import PageHeading from "@/components/PageHeading";
 
 // Styles
 import './aktivitet-style.scss';
-import Button from "@/components/Button";
+import ActivitySignupButton from '@/components/ActivitySignupButton'
 
 export default async function AktiviteterPage({
     params
@@ -24,8 +24,8 @@ export default async function AktiviteterPage({
         return (
             <main className="activity-page-main">
                 <section className="activity-page-main__hero">
-                    <Button
-                        text="Tilmeld"
+                    <ActivitySignupButton
+                        activityId={activityId}
                     />
                     <Image
                         alt={`Picture of dans practice for the ${ activity?.name } team.`}

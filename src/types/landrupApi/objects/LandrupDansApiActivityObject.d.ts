@@ -2,7 +2,7 @@ type Weekdays = 'Mandag' | 'Tirsdag' | 'Onsdag' | 'Torsdag' | 'Fredag' | 'Lørda
 
 
 type LandrupDansApiActivityObject = {
-    id: number,
+    id: string,
     name: string,
     description: string,
     weekday: 

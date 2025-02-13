@@ -13,5 +13,6 @@ type LandrupDansApiUserObject = {
         updatedAt: string,
         userId: number,
         activityId: number
-    }
+    },
+    activities: [LandrupDansApiActivityObject]
 }

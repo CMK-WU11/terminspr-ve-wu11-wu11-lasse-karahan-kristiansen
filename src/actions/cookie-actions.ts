@@ -5,13 +5,12 @@ import { cookies } from 'next/headers';
 
 export async function setSessionCookies( session: LandrupDansApiSessionObject ): Promise<void> {
     try {
-        const cookieStore = await cookies();
-        cookieStore.set('session', JSON.stringify(session));
 
-        return
+        const cookieStore = await cookies();
+        cookieStore.set('session', JSON.stringify(session), { maxAge: 60 * 60 * 7 })
+
     } catch ( error ) {
         console.error('Failed to set session cookies', error);
-        return;
     }
 }
 

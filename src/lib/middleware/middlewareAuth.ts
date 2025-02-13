@@ -22,9 +22,8 @@ export async function checkSession(request: NextRequest): Promise<NextResponse<u
 
     try {
         if ( 
+            request.nextUrl.pathname !== '/' &&
             request.nextUrl.pathname !== '/login' &&
-            request.nextUrl.pathname !== '/auth/login' &&
-            request.nextUrl.pathname !== '/auth/callback' &&
             !isAuth
         ){
             const url = request.nextUrl.clone()

@@ -1,5 +1,5 @@
 type LandrupDansApiSessionObject = {
-    userId: string | number,
+    userId: string,
     token: string,
     role: "default" | "instructor",
     validUntil: number
