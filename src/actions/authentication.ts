@@ -2,10 +2,32 @@
 
 import { z } from "zod"
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const authEndpoint = 'http://localhost:4000/auth/token'
 
-export async function loginFormAction( prevState, formData : FormData ) {
+
+/**
+ * Handles the login form action by validating the form data and sending a login request to the authentication endpoint.
+ * 
+ * @param state - The current state, which can be void or null.
+ * @param payload - The payload containing the form data.
+ * @returns A promise that resolves to void.
+ * 
+ * @throws Will throw an error if the form validation fails.
+ * @throws Will throw an error if the login request fails.
+ * 
+ * The function performs the following steps:
+ * 1. Extracts the username and password from the form data.
+ * 2. Validates the form fields using a Zod schema.
+ * 3. Sends a POST request to the authentication endpoint with the username and password.
+ * 4. Handles different response statuses, throwing errors for unsuccessful login attempts.
+ * 5. Stores the session data in cookies if the login is successful.
+ * 6. Redirects to the home page upon successful login.
+ */
+export async function loginFormAction( state: void | null, payload: unknown ) : Promise<void>{
+    'use server'
+    const formData = payload as FormData
     const username = formData.get("username")
     const password = formData.get("password")
 
@@ -22,24 +44,10 @@ export async function loginFormAction( prevState, formData : FormData ) {
     })
 
     if(!validate.success){ // returns an error if the form validation wasn't succesful
-        return{
-            formData: {
-                username,
-                password
-            },
-            errors: validate.error.format()
-        }
+        throw new Error( JSON.stringify(validate.error.format()) )
     }
 
-    // Attempt login
-    try {
-        loginUser( username as string, password as string)
-    } catch ( error ) {
-        throw new Error ( `Something went wrong with the login: \n ${error}` )
-    }
-}
 
-export async function loginUser( username: string, password:string ) {
     try {
         const response = await fetch( 
             authEndpoint, 
@@ -67,8 +75,9 @@ export async function loginUser( username: string, password:string ) {
 
         const cookieStore = await cookies();
         cookieStore.set('session', JSON.stringify(data), { maxAge: data.validUntil})
-
     } catch ( error ) {
         throw new Error ( `Something went wrong with the login: \n ${error}` )
     }
+
+    redirect( '/' )
 }

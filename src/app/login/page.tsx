@@ -28,13 +28,13 @@ export default function LoginPage(){
                     type="text"
                     name="username"
                     placeholder="brugernavn"
-                    defaultValue={formState?.formData?.username}
+                    // defaultValue={formState?.username}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="adgangskode"
-                    defaultValue={formState?.formData?.password} 
+                    // defaultValue={formState?.password} 
                 />
                 <Button
                     text={isPending ? "Logger ind" : "Log ind"}
