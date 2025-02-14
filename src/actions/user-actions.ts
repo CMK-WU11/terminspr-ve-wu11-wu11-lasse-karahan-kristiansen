@@ -1,3 +1,5 @@
+'use server'
+
 export async function getUser(
     userId : string,
     token : string
@@ -6,7 +8,7 @@ export async function getUser(
         const response = await fetch(
             `http://localhost:4000/api/v1/users/${userId}`,
             {
-                "method": "POST",
+                "method": "GET",
                 "headers": {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${ token }`
@@ -31,13 +33,29 @@ export async function getUserActivities(
     token : string
 ) : Promise<[ LandrupDansApiActivityObject ] | undefined> {
     try {
-        const userActivities : [ LandrupDansApiActivityObject ] | undefined = (await getUser( userId, token ))?.activities
-
-        if ( userActivities != undefined ){
-            throw new Error ( 'Failed to fetch activities - Activities list is undefined' )
-        }
+        const user : LandrupDansApiUserObject | undefined = (await getUser( userId, token ))
+        const userActivities = await user?.activities
+        
+        // if ( userActivities != undefined ){
+        //     throw new Error ( 'Failed to fetch activities - Activities list is undefined' )
+        // }
 
         return await userActivities
+
+    } catch ( error ) {
+        throw new Error ( `Failed to fetch activities - ${ error }` )
+    }
+}
+
+export async function getUserRole(
+    userId : string,
+    token : string
+) : Promise< string | undefined> {
+    try {
+        const user : LandrupDansApiUserObject | undefined = (await getUser( userId, token ))
+        const userRole = await user?.role
+
+        return await userRole
 
     } catch ( error ) {
         throw new Error ( `Failed to fetch activities - ${ error }` )

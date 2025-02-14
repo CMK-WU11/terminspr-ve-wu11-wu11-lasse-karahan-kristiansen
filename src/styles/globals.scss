@@ -26,6 +26,26 @@ main {
   align-items: center;
   margin: 0 auto;
   min-height: 100dvh;
+
+  &.center-content{
+    justify-content: center;
+  }
+}
+
+.page-main__background-overlay {
+  $overlay-height: 60;
+  width: 150dvw;
+  height: $overlay-height * 1dvh ;
+  top: 0;
+  z-index: -2;
+  position: absolute;
+
+  background-color: #5e2e5380;
+  transform: translateY(( (100 - $overlay-height ) * 1% )) rotate( -27deg );
+
+  &::before {
+      content: ' ';
+  }
 }
 
 @media screen and (min-width: 768px) {

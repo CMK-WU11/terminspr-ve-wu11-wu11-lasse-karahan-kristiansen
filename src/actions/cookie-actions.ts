@@ -7,7 +7,7 @@ export async function setSessionCookies( session: LandrupDansApiSessionObject ):
     try {
 
         const cookieStore = await cookies();
-        cookieStore.set('session', JSON.stringify(session), { maxAge: 60 * 60 * 7 })
+        cookieStore.set('session', JSON.stringify(session), { maxAge: session?.validUntil })
 
     } catch ( error ) {
         console.error('Failed to set session cookies', error);

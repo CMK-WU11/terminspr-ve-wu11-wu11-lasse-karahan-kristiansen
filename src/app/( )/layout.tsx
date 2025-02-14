@@ -1,3 +1,5 @@
+import Navbar from "@/containers/Navbar";
+
 export default function AppLayout({
     children,
   }: Readonly<{
@@ -6,6 +8,7 @@ export default function AppLayout({
     return(
         <>
             { children }
+            <Navbar />
         </>
     )
 }

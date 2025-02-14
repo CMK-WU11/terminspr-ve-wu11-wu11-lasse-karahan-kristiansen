@@ -20,8 +20,7 @@ export async function getSessionFromCookies() : Promise< LandrupDansApiSessionOb
         const cookieStore = await cookies();
 
         const session = JSON.parse(await cookieStore.get('session')?.value as string) as LandrupDansApiSessionObject
-        
-        return session
+        return await session
     } catch ( error ) {
         throw new Error(JSON.stringify( error ));
         

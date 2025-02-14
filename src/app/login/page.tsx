@@ -6,6 +6,10 @@ import { loginFormAction } from "@/actions/authentication";
 import Image from "next/image";
 import Button from "@/components/Button";
 
+// Styles
+import './login-page-style.scss'
+
+// Assets
 import SplashImage from '@/assets/splash-image.jpg'
 
 export default function LoginPage(){
@@ -18,42 +22,48 @@ export default function LoginPage(){
 
     return (
         <main className="login-page-main">
-            <h2>Log ind</h2>
-            <form
-                action={ formAction }
-                className="login-page-main__login-form"
-                noValidate
-            >
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="brugernavn"
-                    // defaultValue={formState?.username}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="adgangskode"
-                    // defaultValue={formState?.password} 
-                />
-                <Button
-                    text={isPending ? "Logger ind" : "Log ind"}
-                    disabled={isPending}
-                />
-            </form>
+            <section className="login-page-main__content">
+                <h2>Log ind</h2>
+                <form
+                    action={ formAction }
+                    className="login-page-main__login-form"
+                    noValidate
+                    >
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="brugernavn"
+                        // defaultValue={formState?.username}
+                        />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="adgangskode"
+                        // defaultValue={formState?.password} 
+                        />
+                    <Button
+                        text={isPending ? "Logger ind" : "Log ind"}
+                        disabled={isPending}
+                        />
+                </form>
+            </section>
 
             <Image
-                alt={'Frontpage splash image'}
+                alt={'Background splash image'}
                 src={SplashImage}
                 placeholder="blur"
                 quality={100}
                 fill
                 sizes="100vw"
                 style={{
-                objectFit: 'cover',
-                zIndex: -2
-            }}
+                    objectFit: 'cover',
+                    zIndex: -10
+                }}
             />
+
+            <div className="login-page-main__background-overlay">
+                
+            </div>
         </main>
     )
 }

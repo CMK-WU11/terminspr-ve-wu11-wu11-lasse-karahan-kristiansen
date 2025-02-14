@@ -74,10 +74,10 @@ export async function loginFormAction( state: void | null, payload: unknown ) : 
         const data : LandrupDansApiSessionObject = await response.json()
 
         const cookieStore = await cookies();
-        cookieStore.set('session', JSON.stringify(data), { maxAge: data.validUntil})
+        cookieStore.set('session', JSON.stringify(data), { maxAge: data?.validUntil})
     } catch ( error ) {
         throw new Error ( `Something went wrong with the login: \n ${error}` )
     }
 
-    redirect( '/' )
+    redirect( '/aktiviteter' )
 }

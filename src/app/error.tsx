@@ -1,8 +1,5 @@
 'use client'
 
-
-
-
 import Image from "next/image"
 import Button from '@/components/Button'
 import { useEffect } from 'react'
@@ -22,7 +19,7 @@ export default function Error({
     }, [error])
     
     return (
-        <div>
+        <main className="center-content">
             <h2>Something went wrong!</h2>
             <h3>{ error.message }</h3>
 
@@ -39,10 +36,11 @@ export default function Error({
                 fill
                 sizes="100vw"
                 style={{
-                objectFit: 'cover',
-                zIndex: -2
-            }}
+                    objectFit: 'cover',
+                    zIndex: -2
+                }}
             />
-        </div>
+            <div className="page-main__background-overlay"></div>
+        </main>
     )
 }
