@@ -5,23 +5,23 @@ Lasse Karahan Kristiansen - WU11
 - [Landrup Dans - Project Documentation](#landrup-dans---project-documentation)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-    - [Site URL:](#site-url)
-    - [Users:](#users)
+    - [Site URL](#site-url)
+    - [Users](#users)
   - [Project Description](#project-description)
-    - [Project stack:](#project-stack)
-      - [Packages and tools:](#packages-and-tools)
-      - [API - landrup-dans-api:](#api---landrup-dans-api)
+    - [Project stack](#project-stack)
+      - [Packages and tools](#packages-and-tools)
+      - [API - landrup-dans-api](#api---landrup-dans-api)
   - [Code Snippets](#code-snippets)
   - [References](#references)
   - [Appendix](#appendix)
 
 ## Introduction
 
-### Site URL:
+### Site URL
 Host with render.com\
-[https://landrup-dans.dk](https://landrup-dans.dk)
+[https://terminspr-ve-wu11-wu11-lasse-karahan.onrender.com/](https://terminspr-ve-wu11-wu11-lasse-karahan.onrender.com/)
 
-### Users:
+### Users
 | id | username | password | age | role |
 | --- | --- | --- | --- | --- |
 | 1 | instructor1 | 1234 | 24 | instructor |
@@ -38,18 +38,18 @@ Host with render.com\
 
 ## Project Description
 
-### Project stack:
+### Project stack
 - Frontend: Next.js
 
 
-#### Packages and tools:
+#### Packages and tools
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org/)
 - SASS (SCSS)
 - ZOD (for validation)
 
 
-#### API - landrup-dans-api:
+#### API - landrup-dans-api
 
 [Landrup Dans API](https://github.com/rts-cmk/landrup-dans-api)
 - Backend DB: sqlite3 //REVIEW - change apropiately accorning to the project stack - after review
@@ -57,7 +57,26 @@ Host with render.com\
 
 ## Code Snippets
 
-```jsx
+```ts
+type Weekdays = 'Mandag' | 'Tirsdag' | 'Onsdag' | 'Torsdag' | 'Fredag' | 'Lørdag' | 'Søndag'
+
+type LandrupDansApiActivityObject = {
+    id: number,
+    name: string,
+    description: string,
+    weekday: 
+        //NOTE - This is a union type of the Weekdays type with the first letter capitalized and lowercase. This is to ensure that the API returns the correct format of the weekdays and handle minor typos.
+        Capitalize<Weekdays> | 
+        Lowercase<Weekdays>,,
+    ...
+    asset: {
+        id: number,
+        url: string,
+        createdAt: string,
+        updatedAt: string
+    },
+    users: [ LandrupDansApiUserObject ]
+}
 ```
 
 ## References

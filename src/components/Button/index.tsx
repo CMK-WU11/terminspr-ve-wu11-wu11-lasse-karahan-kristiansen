@@ -39,7 +39,7 @@ export default function Button(
         text,
         className,
         onClick,
-        disabled = false,
+        disabled,
         formAction
     }: ButtonProps){
     return(
